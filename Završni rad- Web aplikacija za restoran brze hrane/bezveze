@@ -1,0 +1,84 @@
+<?php
+ ob_start();
+ session_start();
+
+ require('spoj.php');
+
+ $error = false;
+
+ if (isset($_REQUEST['Korisnicko_ime'])
+  // clean user inputs to prevent sql injections 
+  $Ime = stripslashes($_REQUEST['Korisnicko_ime']);
+  $Ime = mysqli_real_escape_string($conn, $Korisnicko_ime);
+
+  $Prezime = trim($_POST['prezime']);
+  $Prezime = strip_tags($Prezime);
+  $Prezime = htmlspecialchars($Prezime);
+  
+  $Email = trim($_POST['email']);
+  $Email = strip_tags($Email);
+  $Email = htmlspecialchars($Email);
+  
+  $Korisnicko_ime = trim($_POST['k_ime']);
+  $Korisnicko_ime = strip_tags($Korisnicko_ime);
+  $Korisnicko_ime = htmlspecialchars($Korisnicko_ime);
+
+  $Lozinka = trim($_POST['pass']);
+  $Lozinka = strip_tags($Lozinka);
+  $Lozinka = htmlspecialchars($Lozinka);
+  
+  
+   $query = "INSERT into korisnik (Ime, Prezime, Korisnicko_ime, E-mail, Lozinka, Uloga) VALUES('$Ime','$Prezime','$Email','$Korisnicko_ime','$Lozinka')";
+   $res = mysqli_query($conn, $query);
+    
+   if ($res) {
+    $errTyp = "success";
+    $errMSG = "Uspjesno si se registriro, sad se možeš prijaviti.";
+    unset($Ime);
+    unset($Prezime);
+    unset($Email);
+    unset($Korisnicko_ime);
+    unset($Lozinka);
+   } else {
+    $errTyp = "danger";
+    $errMSG = "Nesto je poslo po krivu, pokusaj ponovo."; 
+   } 
+    
+  }
+ 
+?>
+
+
+
+
+
+<?php 
+    require_once("spoj.php");
+    session_start();
+    $error = "";
+
+
+    if(isset($_POST["prijava"])) {
+	    if(empty($_POST["username"] || empty($_POST["pass"]))) {
+		    $error = "Korisnicko ime i lozinka nisu postavljeni";
+	    } else {
+		    $korisnicko_ime = $_POST["username"];
+		    $lozinka = $_POST["pass"];
+
+		    $sql = "SELECT * FROM korisnik WHERE Korisnicko_ime = '$korisnicko_ime' AND Lozinka = '$lozinka'";
+            
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_row($result);
+
+		    if($row[2] == $korisnicko_ime) {
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION["username"] = $korisnicko_ime;
+                $_SESSION["pass"] = $lozinka;
+                echo "Uspješno ste se prijavili.";
+		    } else {
+				$error = "Netocno korisnicko ime ili lozinka";
+				$_SESSION["prijavljen"] = false;
+		    }
+	    }
+    }
+?>
