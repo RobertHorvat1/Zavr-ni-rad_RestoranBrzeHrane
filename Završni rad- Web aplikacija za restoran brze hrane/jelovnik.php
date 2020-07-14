@@ -100,7 +100,8 @@ if(!empty($_GET["action"])) {
     </head>
 
 <body>
-    <div class = "row">
+<div id="container">
+    <div class = "row" id="container">
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -120,7 +121,6 @@ if(!empty($_GET["action"])) {
                     <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>
                     <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>
                     <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>
-                    <a class="btn btn-primary btn-lg" href="kontakt.php" role="button">Kontakt</a>
                 </ul>
             </div>
         </nav>
@@ -140,7 +140,7 @@ if(!empty($_GET["action"])) {
                     <?php echo $product_array1[$key]["Naziv_jela"]; ?><?php unset($_SESSION["Naziv_jela"]); $_SESSION['Naziv_jela']=$product_array1[$key]["Naziv_jela"]; ?></a>..........<?php echo $product_array1[$key]["Cijena"]."kn"; ?>
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
-                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' value='Dodaj'></form></div>";
+                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Dodaj'></form></div>";
                      }
                     ?>
                     
@@ -166,7 +166,7 @@ if(!empty($_GET["action"])) {
                    <?php echo $product_array1[$key]["Naziv_jela"]; ?>..........<?php echo $product_array1[$key]["Cijena"]."kn"; ?>
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
-                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' value='Add'></form></div>";
+                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Dodaj'></form></div>";
                      }
                     ?></li>
                 </ul>
@@ -190,7 +190,7 @@ if(!empty($_GET["action"])) {
                     <?php echo $product_array1[$key]["Naziv_jela"]; ?>..........<?php echo $product_array1[$key]["Cijena"]."kn"; ?>
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
-                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' value='Add'></form></div>";
+                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Dodaj'></form></div>";
                      }
                     ?></li>
                 </ul>
@@ -216,7 +216,7 @@ if(!empty($_GET["action"])) {
                     <?php echo $product_array1[$key]["Naziv_jela"]; ?><?php echo $product_array1[$key]["Cijena"]."kn"; ?>
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
-                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' value='Add'></form></div>";
+                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Add'></form></div>";
                      }
                     ?></li>
                 </ul>
@@ -240,7 +240,7 @@ if(!empty($_GET["action"])) {
                     <?php echo $product_array1[$key]["Naziv_jela"]; ?>..........<?php echo $product_array1[$key]["Cijena"]."kn"; ?>
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
-                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' value='Add'></form></div>";
+                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Dodaj'></form></div>";
                     }
                     ?>
                     </li>
@@ -387,6 +387,7 @@ if(isset($_SESSION['Korisnicko_ime'])){
 }
 ?>
 </div>
+</div>
 <footer class="section footer-classic context-dark bg-image" style="background: #dfca2c;">
         <div class="container">
           <div class="row row-30">
@@ -406,14 +407,12 @@ if(isset($_SESSION['Korisnicko_ime'])){
                 <dd><a href="mailto:#">rhorvat@etfos.hr</a></dd>
               </dl>
             </div>
+            <div class="col-md-4">
+                <div class="col"><a class="social-inner" href="https://www.facebook.com/robert.horvat.146"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+                <div class="col"><a class="social-inner" href="https://www.instagram.com/robert.horvat3/"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+            </div>
           </div>
-        </div>
-        <div class="row no-gutters social-container">
-          <div class="col"><a class="social-inner" href="https://www.facebook.com/robert.horvat.146"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
-          <div class="col"><a class="social-inner" href="https://www.instagram.com/robert.horvat3/"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
-          <p><br></p>
-          <p><br></p>
-        </div>
+        </div> 
       </footer>
 </body>
 </html>
@@ -479,4 +478,8 @@ function statistikaNajJeloUnos($conn){
     $sql6 = "UPDATE statistika SET Najvise_narucivano_jelo='$Najvise_narucivano_jelo'";
     $rez = $conn->query($sql6); 
 }
+
+
+
+
 ?> 

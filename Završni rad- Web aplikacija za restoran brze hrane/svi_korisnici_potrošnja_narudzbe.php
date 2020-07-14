@@ -1,12 +1,18 @@
 <?php
-// Start the session
-date_default_timezone_set('Europe/Zagreb');
-include 'spojZaPrijavuReg.php';
-include 'komentari.php';
 session_start();
-require('spoj.php');
-$id_stranice=3;
+error_reporting(E_ERROR | E_PARSE);
+include 'spojZaPrijavuReg.php';
+include 'spoj.php';
+
+if(isset($_SESSION['Korisnicko_ime'])){
+    $Korisnicko_ime=$_SESSION['Korisnicko_ime'];
+    $Korisnik_id=$_SESSION['Korisnik_id'];
+    $Uloga=$_SESSION['Uloga'];
+}
+	if($Uloga=="Administrator")
+	{
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,26 +68,72 @@ $id_stranice=3;
         </nav>
     </div>
     <div id="hhh" class="container-fluid">
-        <h1 id="novo">LOKAL</h1>
-        <section>
-            <p id="tekst1">Ovdje možete komentirati kvalitetu našeg lokala u gradu, da li je udaljena lokacija, urednost samog lokala...</p>
-        </section>    
-    </div>
-    <?php
-        if(isset($_SESSION['Korisnicko_ime'])){
-            echo"<form method='POST' action=".unesiKomentar($conn).">
-                <input type= 'hidden' name='Korisnicko_ime' value='".$_SESSION['Korisnicko_ime']."'>
-                <input type='hidden' name='id_stranice' value='3'>
-                <textarea id='komentar'  class='form-control' name='Komentar' ></textarea><br>
-                <button type='submit' class='btn btn-primary' name='komentarSubmit'>Komentiraj</button>
-            </form>"; 
-        }else{
-            echo "Da bi komentirao moraš se prijaviti!";
+        <h1 id="novo">Svi korisnici</h1>
+        <?php
+            require_once('spoj.php');
+            $db_handle = new DBController();
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            }else{
+                $page = $_GET['page'];
+            }
+            $num_per_page=5;
+            $start_from = ($page - 1)*5;
+            $statistikaSviKorisnici = $db_handle->runQuery("SELECT `Statistika`, `Potrosnja`, `Korisnicko_ime` FROM `korisnik` LIMIT $start_from, $num_per_page");
+            if(mysqli_query($conn, $statistikaSviKorisnici)) {
+                $statistikaSviKorisniciArray = array('Statistika'=>$statistikaSviKorisnici[0]["Statistika"], 'Potrosnja'=>$statistikaSviKorisnici[0]["Potrosnja"], 'Korisnicko_ime'=>$statistikaSviKorisnici[0]["Korisnicko_ime"]);
         }
-        //getKomentar($conn, $id_stranice);    
-    ?>
+        if (!empty($statistikaSviKorisnici)) { 
+            foreach($statistikaSviKorisnici as $key=>$value){
+        ?>
+        <div id="table-narudzba">
+        <p></p>
+        <table class="tbl-narudzba" style="width:100%" cellpadding="4" cellspacing="4">
+            <tr>
+                <th>Korisničko ime:</th>
+                <td><?php echo $statistikaSviKorisnici[$key]["Korisnicko_ime"]; ?></td>
+            </tr>
+            <tr>
+                <th>Ukupno narudžbi:</th>
+                <td><?php echo $statistikaSviKorisnici[$key]["Statistika"]; ?></td>
+            </tr>
+            <tr>
+                <th>Ukupna potrošnja:</th>
+                <td><?php echo $statistikaSviKorisnici[$key]["Potrosnja"]; ?></td>
+            </tr>
+            
+        </table>
+        <p><br></p>
+        </div>
+        <?php
+		    }
+	    }else{
+            die("");
+        }
+        ?>
+        <?php
+        $page_query = "SELECT * FROM `korisnik`";
+        $page_result = mysqli_query($conn, $page_query);
+        $total_record = mysqli_num_rows($page_result);
+        $total_page=ceil($total_record/$num_per_page);
+
+        echo "<div id='pagging'>";
+        if($page>1){
+            echo "<a href='narudžba.php?page=".($page-1)."' class='btn btn-danger'>Nazad</a>";
+        }
+
+        for($i=1; $i<$total_page; $i++){
+            echo "<a href='narudžba.php?page=".$i."' class='btn btn-primary'>$i</a>";
+        }
+
+        if($i>$page){
+            echo "<a href='narudžba.php?page=".($page+1)."' class='btn btn-danger'>Naprijed</a>";
+        }
+        echo "</div>";
+	    ?>
     </div>
-        <footer class="section footer-classic context-dark bg-image" style="background: #dfca2c;">
+    </div>
+    <footer class="section footer-classic context-dark bg-image" style="background: #dfca2c;">
         <div class="container">
           <div class="row row-30">
             <div class="col-md-4 col-xl-5">
@@ -109,3 +161,14 @@ $id_stranice=3;
       </footer>
 </body>
 </html>
+<?php
+	}else{
+		if($Uloga=="Korisnik")
+		{
+			header("location:korisnik_profil.php");		
+		}
+		else{
+			header("location:prijava.php");
+		}
+	}
+?>

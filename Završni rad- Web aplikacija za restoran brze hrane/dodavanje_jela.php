@@ -32,6 +32,7 @@ require('spoj.php');
 </head>
 
 <body>
+<div id="container">
     <div class = "row">
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
@@ -51,7 +52,6 @@ require('spoj.php');
                     <a class="btn btn-primary btn-lg" href="prijava.php" role="button">Prijava</a>
                     <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>
                     <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>
-                    <a class="btn btn-primary btn-lg" href="kontakt.php" role="button">Kontakt</a>
                 </ul>
             </div>
         </nav>
@@ -102,6 +102,7 @@ require('spoj.php');
         </div>	
     </div>
     <?php } ?>
+    </div>
     <footer class="section footer-classic context-dark bg-image" style="background: #dfca2c;">
         <div class="container">
           <div class="row row-30">
@@ -121,14 +122,12 @@ require('spoj.php');
                 <dd><a href="mailto:#">rhorvat@etfos.hr</a></dd>
               </dl>
             </div>
+            <div class="col-md-4">
+                <div class="col"><a class="social-inner" href="https://www.facebook.com/robert.horvat.146"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+                <div class="col"><a class="social-inner" href="https://www.instagram.com/robert.horvat3/"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+            </div>
           </div>
-        </div>
-        <div class="row no-gutters social-container">
-          <div class="col"><a class="social-inner" href="https://www.facebook.com/robert.horvat.146"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
-          <div class="col"><a class="social-inner" href="https://www.instagram.com/robert.horvat3/"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
-          <p><br></p>
-          <p><br></p>
-        </div>
-      </footer>
+        </div> 
+    </footer>
 </body>
 </html>

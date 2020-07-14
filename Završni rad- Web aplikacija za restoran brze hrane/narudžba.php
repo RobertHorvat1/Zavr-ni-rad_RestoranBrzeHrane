@@ -2,6 +2,8 @@
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include 'spojZaPrijavuReg.php';
+include 'spoj.php';
+
 if(isset($_SESSION['Korisnicko_ime'])){
     $Korisnicko_ime=$_SESSION['Korisnicko_ime'];
     $Korisnik_id=$_SESSION['Korisnik_id'];
@@ -39,6 +41,7 @@ if(isset($_SESSION['Korisnicko_ime'])){
     </head>
 
 <body>
+<div id="container">
     <div class = "row">
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
@@ -59,7 +62,6 @@ if(isset($_SESSION['Korisnicko_ime'])){
                     <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>
                     <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>
                     <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>
-                    <a class="btn btn-primary btn-lg" href="kontakt.php" role="button">Kontakt</a>
                 </ul>
             </div>
         </nav>
@@ -69,7 +71,14 @@ if(isset($_SESSION['Korisnicko_ime'])){
         require_once('spoj.php');
         require_once('spojZaPrijavuReg.php');
         $db_handle = new DBController();
-        $narudzba = $db_handle->runQuery("SELECT * FROM `narudzba` ORDER BY `Datum` DESC");
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        }else{
+            $page = $_GET['page'];
+        }
+        $num_per_page=5;
+        $start_from = ($page - 1)*5;
+        $narudzba = $db_handle->runQuery("SELECT * FROM `narudzba` ORDER BY `Datum` DESC LIMIT $start_from, $num_per_page");
         if(mysqli_query($conn, $narudzba)) {
             $narudzbaArray = array('ID'=>$narudzba[0]["ID"], 'Korisnicko_ime'=>$narudzba[0]["Korisnicko_ime"], 'Adresa'=>$narudzba[0]["Adresa"], 'Datum'=>$narudzba[0]["Datum"], 'Detalji_narudzbe'=>$narudzba[0]["Detalji_narudzbe"], 'Ukupna_cijena'=>$narudzba[0]["Ukupna_cijena"]);
         }else{
@@ -109,11 +118,32 @@ if(isset($_SESSION['Korisnicko_ime'])){
         <p><br></p>
         </div>
         <?php
-		    }
+            }
 	    }else{
             die("");
         }
 	    ?>
+        <?php
+        $page_query = "SELECT * FROM `narudzba`";
+        $page_result = mysqli_query($conn, $page_query);
+        $total_record = mysqli_num_rows($page_result);
+        $total_page=ceil($total_record/$num_per_page);
+
+        echo "<div id='pagging'>";
+        if($page>1){
+            echo "<a href='narudžba.php?page=".($page-1)."' class='btn btn-danger'>Nazad</a>";
+        }
+
+        for($i=1; $i<$total_page; $i++){
+            echo "<a href='narudžba.php?page=".$i."' class='btn btn-primary'>$i</a>";
+        }
+
+        if($i>$page){
+            echo "<a href='narudžba.php?page=".($page+1)."' class='btn btn-danger'>Naprijed</a>";
+        }
+        echo "</div>";
+        ?>
+        </div>
         <footer class="section footer-classic context-dark bg-image" style="background: #dfca2c;">
         <div class="container">
           <div class="row row-30">
@@ -133,14 +163,12 @@ if(isset($_SESSION['Korisnicko_ime'])){
                 <dd><a href="mailto:#">rhorvat@etfos.hr</a></dd>
               </dl>
             </div>
+            <div class="col-md-4">
+                <div class="col"><a class="social-inner" href="https://www.facebook.com/robert.horvat.146"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+                <div class="col"><a class="social-inner" href="https://www.instagram.com/robert.horvat3/"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+            </div>
           </div>
-        </div>
-        <div class="row no-gutters social-container">
-          <div class="col"><a class="social-inner" href="https://www.facebook.com/robert.horvat.146"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
-          <div class="col"><a class="social-inner" href="https://www.instagram.com/robert.horvat3/"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
-          <p><br></p>
-          <p><br></p>
-        </div>
+        </div> 
       </footer>
 </body>
 </html>

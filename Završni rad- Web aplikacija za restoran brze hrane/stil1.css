@@ -6,7 +6,17 @@
 body {
     background-color: #d6ffb7;
 }
+*{
+  margin:0;
+  padding:0;
+}
 
+html, body{
+  height: 100%;
+}
+#container{
+  min-height:100%;
+}
 #naslov{
     text-align: center;
     font-family:"Impact";
@@ -28,6 +38,7 @@ body {
 
 #btn2{
     float: right;
+    margin: 3px;
 }
 
 /* JELOVNIK*/
@@ -78,10 +89,12 @@ body {
     margin-top: 10px;
     cursor:pointer;
 }
-
+#addBtn{
+  margin: 10px;
+}
 /* SHOOPING CART*/
 #shopping-cart {
-	margin: 30px;
+	margin: 5px;
 }
 .txt-heading {
 	background-color: transparent;
@@ -97,12 +110,27 @@ body {
   float: right;
   margin: 10px 10px;
 }
-
+#btnEmpty{
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 4px 2px;
+  width: 8%;
+}
 #naruciBtn{
   padding: 5px 10px;
   border-radius: 3px;
   display: inline-block;
-	margin: 4px 2px;
+  margin: 4px 2px;
+  width: 8%;
+}
+
+#btn3{
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 4px 2px;
+  width: 8%;
 }
 .tbl-cart {
   font-size: 16px;
@@ -173,6 +201,12 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 
+/*PAGGING*/
+#pagging{
+  margin: auto;
+  width: 35%;
+  padding: 5px;
+}
 
 /*
 #btn{
