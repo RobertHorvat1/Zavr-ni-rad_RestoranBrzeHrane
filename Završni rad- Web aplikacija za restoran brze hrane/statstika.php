@@ -43,16 +43,15 @@ function statistikaUkupnoZaradaUnos($conn){
 }
 
 function statistikaUkupnoUkupnoPosjetaWebStraniciiUnos($conn){
-    if(isset($_SESSION['views'])){ 
-        $_SESSION['views'] = $_SESSION['views']+1;
-        $Ukupno_pogleda_web=$_SESSION['views'];
-        $sql9 = "UPDATE statistika SET Ukupno_pogleda_web='$Ukupno_pogleda_web'";
-        $rez = $conn->query($sql9);
-    }else{
-    $_SESSION['views']=1;
-    }   
+    $sql8 = "SELECT Ukupno_pogleda_web FROM statistika";
+    $rezultat = $conn->query($sql8);
+    if(mysqli_query($conn, $sql8)) {
+        while($row = $rezultat->fetch_assoc()){   
+            $Ukupno_pogleda_web = $row['Ukupno_pogleda_web'];
+        }
+    }
+    $Ukupno_pogleda_web += 1;
+    $sql9 = "UPDATE statistika SET Ukupno_pogleda_web='$Ukupno_pogleda_web'";
+    $rez = $conn->query($sql9);   
 }
-
-
-
 ?>

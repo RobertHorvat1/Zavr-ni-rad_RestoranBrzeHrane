@@ -44,19 +44,19 @@ statistikaUkupnoZaradaUnos($conn);
                     <a class="navbar-brand" href="index.php">Feast the beast</a>
                 </div>
                 <ul  class="nav navbar-nav">
-                    <a class="btn btn-primary btn-lg" href="index.php" role="button">Početna</a>
-                    <a class="btn btn-primary btn-lg" href="jelovnik.php" role="button">Jelovnik</a>
+                    <a class="btn btn-primary btn-lg" href="index.php" role="button">Početna</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="jelovnik.php" role="button">Jelovnik</a>&nbsp;
                     <?php
                         if(isset($_SESSION['Korisnicko_ime'])){
                     ?>
-                    <a class="btn btn-primary btn-lg" href="narudžba.php" role="button">Narudžba</a>
+                    <a class="btn btn-primary btn-lg" href="narudžba.php" role="button">Narudžba</a>&nbsp;
                     <?php
                         }
                     ?>
-                    <a class="btn btn-primary btn-lg" href="prijava.php" role="button">Prijava</a>
-                    <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>
-                    <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>
-                    <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>
+                    <a class="btn btn-primary btn-lg" href="prijava.php" role="button">Prijava</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>&nbsp;
                 </ul>
             </div>
         </nav>
@@ -90,12 +90,18 @@ statistikaUkupnoZaradaUnos($conn);
               </dl>
             </div>
             <div class="col-md-4">
-                <div class="col"><a class="social-inner" href="https://www.facebook.com/robert.horvat.146"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
-                <div class="col"><a class="social-inner" href="https://www.instagram.com/robert.horvat3/"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+                <div class="col">
+                    <a class="social-inner" href="https://www.facebook.com/robert.horvat.146">
+                    <span class="icon mdi mdi-facebook"></span><span>Facebook</span></a>
+                </div>
+                <div class="col">
+                <a class="social-inner" href="https://www.instagram.com/robert.horvat3/">
+                <span class="icon mdi mdi-instagram"></span><span>instagram</span></a>
+                </div>
             </div>
           </div>
         </div> 
-      </footer>
+    </footer>
 </body>
 </html>
 

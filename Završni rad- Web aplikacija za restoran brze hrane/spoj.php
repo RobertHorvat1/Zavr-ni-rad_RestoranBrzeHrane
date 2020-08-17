@@ -1,4 +1,3 @@
-
 <?php
 class DBController {
     private $servername = "localhost";
@@ -30,9 +29,5 @@ class DBController {
 		$result  = mysqli_query($this->conn,$query);
 		$rowcount = mysqli_num_rows($result);
 		return $rowcount;	
-	}
-
-    
-}
-
-?>
+	}   
+}?>

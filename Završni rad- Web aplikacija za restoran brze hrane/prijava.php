@@ -39,19 +39,19 @@ require('spojZaPrijavuReg.php');
                     <a class="navbar-brand" href="index.php">Feast the beast</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a class="btn btn-primary btn-lg" href="index.php" role="button">Početna</a>
-                    <a class="btn btn-primary btn-lg" href="jelovnik.php" role="button">Jelovnik</a>
+                    <a class="btn btn-primary btn-lg" href="index.php" role="button">Početna</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="jelovnik.php" role="button">Jelovnik</a>&nbsp;
                     <?php
                         if(isset($_SESSION['Korisnicko_ime'])){
                     ?>
-                    <a class="btn btn-primary btn-lg" href="narudžba.php" role="button">Narudžba</a>
+                    <a class="btn btn-primary btn-lg" href="narudžba.php" role="button">Narudžba</a>&nbsp;
                     <?php
                         }
                     ?>
-                    <a class="btn btn-primary btn-lg" href="prijava.php" role="button">Prijava</a>
-                    <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>
-                    <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>
-                    <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>
+                    <a class="btn btn-primary btn-lg" href="prijava.php" role="button">Prijava</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>&nbsp;
                 </ul>
             </div>
         </nav>
@@ -145,12 +145,12 @@ require('spojZaPrijavuReg.php');
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input name="prijava" type="submit" value="Login ">
+                    <button type="submit" class="btn btn-block btn-primary" id="prijavaBtn" name="btn-signup">Prijava</button>
                     </div>
                 </div> 
             </table>
         </form>
-        <p>Nisi se registriarao.<a href="registracija.php">Registriraj se.</a></p>
+        <p>Nisi se registrirao.<a href="registracija.php">Registriraj se.</a></p>
         <?php
             }
             echo $error;

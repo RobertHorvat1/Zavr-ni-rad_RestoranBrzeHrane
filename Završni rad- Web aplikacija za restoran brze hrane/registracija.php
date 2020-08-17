@@ -108,7 +108,8 @@ include 'statstika.php';
         $Lozinka = stripslashes($_REQUEST['Lozinka']);
         $Lozinka = mysqli_real_escape_string($conn, $Lozinka);
 
-        $query = "INSERT into korisnik (Ime, Prezime, Korisnicko_ime, Email, Lozinka) VALUES ('$Ime', '$Prezime', '$Korisnicko_ime', '$Email', '$Lozinka')";
+        $query = "INSERT into korisnik (Ime, Prezime, Korisnicko_ime, Email, Lozinka) 
+        VALUES ('$Ime', '$Prezime', '$Korisnicko_ime', '$Email', '$Lozinka')";
         $result = mysqli_query($conn, $query);
         if($result==true){
             $Korisnik_id =  $conn->insert_id;
@@ -119,8 +120,8 @@ include 'statstika.php';
             <h3>Uspješno si se registrirao.</h3>
             <br/>Click here to <a href='prijava.php'>Prijava</a></div>";
         }
-    }else{
-    ?>
+        }else{
+        ?>
     <div class="container">
         <h1>Registracija</h1>
         <div id="login-form">
@@ -166,7 +167,7 @@ include 'statstika.php';
                 </div>
             
                 <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-primary" name="btn-signup">Sign Up</button>
+                    <button type="submit" class="btn btn-block btn-primary" id="registracijaBtn" name="btn-signup">Registriraj se</button>
                 </div>
             </table>
                 <div class="form-group">

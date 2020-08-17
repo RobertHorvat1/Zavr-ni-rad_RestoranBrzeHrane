@@ -3,6 +3,12 @@
 #naslovni_dio{
     background-color:#dfca2c;
 }
+
+#naslov{
+  text-align: center;
+  font-family:"Impact";
+  font-size: 300%;
+}
 body {
     background-color: #d6ffb7;
 }
@@ -17,11 +23,8 @@ html, body{
 #container{
   min-height:100%;
 }
-#naslov{
-    text-align: center;
-    font-family:"Impact";
-    font-size: 300%;
-}
+
+
 #novo{
     font-family:"Verdana";
     text-align: left;
@@ -40,6 +43,19 @@ html, body{
     float: right;
     margin: 3px;
 }
+/* PRIJAVA I REGISTRACIJA*/
+
+#registracijaBtn{
+  width: 15%;
+  display: inline-block;
+  margin: 2px 2px;
+}
+
+#prijavaBtn{
+  display: inline-block;
+  margin: 2px 2px;
+}
+
 
 /* JELOVNIK*/
 .dropbtn {
@@ -152,15 +168,38 @@ html, body{
 .tbl-narudzba{
   font-size: 14px;
   background-color: #c1e2a4;
+  width: 50%;
 }
 
 .tbl-narudzba td, th{
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  
 }
 
+.tbl-narudzba1{
+  font-size: 14px;
+  background-color: #c1e2a4;
+  width: 50%;
+}
 
+.tbl-narudzba1 td, th{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  width: 50%;
+}
+
+#table-narudzba{
+  text-align: center;
+  align-self: center;
+  align-items: center;
+}
+
+#novo{
+  text-align: center;
+}
 /* FORUM*/
 
 #forumBtn{

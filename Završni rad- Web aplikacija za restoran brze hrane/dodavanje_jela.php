@@ -97,7 +97,7 @@ require('spoj.php');
                 <label for="Cijena">Cijena: </label>
                 <input type="number" name="Cijena" value="">
                 <br>
-                <button type="submit" class="btn btn-block btn-primary" name="action">Naruči</button>
+                <button type="submit" class="btn btn-block btn-primary" id="btnEmpty" name="action">Naruči</button>
             </form>
         </div>	
     </div>

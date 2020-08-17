@@ -78,14 +78,17 @@ if(isset($_SESSION['Korisnicko_ime'])){
         $db_handle = new DBController();
         $statistikaAdmin = $db_handle->runQuery("SELECT * FROM `statistika`");
         if(mysqli_query($conn, $statistikaAdmin)) {
-            $statistikaArray = array('ID'=>$statistikaAdmin[0]["ID"], 'Ukupno_narudzba'=>$statistikaAdmin[0]["Ukupno_narudzba"], 'Ukupno_korisnika'=>$statistikaAdmin[0]["Ukupno_korisnika"], 'Zbroj_zarade'=>$statistikaAdmin[0]["Zbroj_zarade"], 'Ukupno_pogleda_web'=>$statistikaAdmin[0]["Ukupno_pogleda_web"], 'Najvise_narucivano_jelo'=>$statistikaAdmin[0]["Najvise_narucivano_jelo"]);
+            $statistikaArray = array('ID'=>$statistikaAdmin[0]["ID"], 'Ukupno_narudzba'=>$statistikaAdmin[0]["Ukupno_narudzba"], 
+            'Ukupno_korisnika'=>$statistikaAdmin[0]["Ukupno_korisnika"], 'Zbroj_zarade'=>$statistikaAdmin[0]["Zbroj_zarade"], 
+            'Ukupno_pogleda_web'=>$statistikaAdmin[0]["Ukupno_pogleda_web"], 
+            'Najvise_narucivano_jelo'=>$statistikaAdmin[0]["Najvise_narucivano_jelo"]);
         }
         if (!empty($statistikaAdmin)) { 
             foreach($statistikaAdmin as $key=>$value){
         ?>
         <div id="table-narudzba">
         <p></p>
-        <table class="tbl-narudzba" style="width:100%" cellpadding="4" cellspacing="4">
+        <table class="tbl-narudzba1" style="width:50% margin: 0px auto;"  cellpadding="4" cellspacing="4">
             <tr>
                 <th>ID:</th>
                 <td><?php echo $statistikaAdmin[$key]["ID"]; ?></td>
@@ -132,7 +135,7 @@ if(isset($_SESSION['Korisnicko_ime'])){
         ?>
         <div id="table-narudzba">
         <p></p>
-        <table class="tbl-narudzba" style="width:100%" cellpadding="4" cellspacing="4">
+        <table class="tbl-narudzba1" style="width:50% margin: 0px auto;" cellpadding="4" cellspacing="4">
             <tr>
                 <th>Korisničko ime:</th>
                 <td><?php echo $statistikaKorisnikMaxNarudzbe[$key]["Korisnik_ime"]; ?></td>
@@ -164,7 +167,7 @@ if(isset($_SESSION['Korisnicko_ime'])){
         ?>
         <div id="table-narudzba">
         <p></p>
-        <table class="tbl-narudzba" style="width:100%" cellpadding="4" cellspacing="4">
+        <table class="tbl-narudzba1" style="width:50% margin: 0px auto;" cellpadding="4" cellspacing="4">
             <tr>
                 <th>Korisničko ime:</th>
                 <td><?php echo $statistikaKorisnikMaxPotrosnjaN[$key]["Korisnik_ime"]; ?></td>

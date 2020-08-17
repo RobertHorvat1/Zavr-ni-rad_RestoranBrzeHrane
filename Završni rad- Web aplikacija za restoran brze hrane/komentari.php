@@ -6,7 +6,8 @@ function unesiKomentar($conn){
         $Komentar = $_POST['Komentar'];
         $id_stranice = $_POST['id_stranice'];
 
-        $sql = "INSERT INTO komentari (Korisnicko_ime, Komentar, ID_stranice) VALUES ('$Korisnicko_ime', '$Komentar', '$id_stranice')";
+        $sql = "INSERT INTO komentari (Korisnicko_ime, Komentar, ID_stranice) 
+        VALUES ('$Korisnicko_ime', '$Komentar', '$id_stranice')";
         $resultat = $conn->query($sql); 
     }
 }
@@ -27,11 +28,6 @@ function dohvatiKomentar($conn, $id_stranice){
         } else {
             $error = "Error: " . $sql . "<br>" . mysqli_error($conn);
             echo $error;
-        }
-            
-       
-    
+        }    
 }
-
-
 ?>

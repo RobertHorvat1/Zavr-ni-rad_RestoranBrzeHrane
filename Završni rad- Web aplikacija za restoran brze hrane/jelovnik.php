@@ -81,12 +81,12 @@ if(!empty($_GET["action"])) {
         }
     </style>
     <script>
-        function myFunction1() {
+       function myFunction1() {
            document.getElementById("myDropdown1").classList.toggle("show");
         }
         function myFunction2() {
             document.getElementById("myDropdown2").classList.toggle("show");
-        }
+        } f
         function myFunction3() {
             document.getElementById("myDropdown3").classList.toggle("show");
         }
@@ -97,6 +97,8 @@ if(!empty($_GET["action"])) {
             document.getElementById("myDropdown5").classList.toggle("show");
         }
     </script>
+
+    
     </head>
 
 <body>
@@ -108,26 +110,26 @@ if(!empty($_GET["action"])) {
                     <a class="navbar-brand" href="index.php">Feast the beast</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a class="btn btn-primary btn-lg" href="index.php" role="button">Početna</a>
-                    <a class="btn btn-primary btn-lg" href="jelovnik.php" role="button">Jelovnik</a>
+                    <a class="btn btn-primary btn-lg" href="index.php" role="button">Početna</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="jelovnik.php" role="button">Jelovnik</a>&nbsp;
                     <?php
                         if(isset($_SESSION['Korisnicko_ime'])){
                     ?>
-                    <a class="btn btn-primary btn-lg" href="narudžba.php" role="button">Narudžba</a>
+                    <a class="btn btn-primary btn-lg" href="narudžba.php" role="button">Narudžba</a>&nbsp;
                     <?php
                         }
                     ?>
-                    <a class="btn btn-primary btn-lg" href="prijava.php" role="button">Prijava</a>
-                    <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>
-                    <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>
-                    <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>
+                    <a class="btn btn-primary btn-lg" href="prijava.php" role="button">Prijava</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="registracija.php" role="button">Registracija</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="forum.php" role="button">Forum</a>&nbsp;
+                    <a class="btn btn-primary btn-lg" href="o_nama.php" role="button">O nama</a>&nbsp;
                 </ul>
             </div>
         </nav>
     </div>
     <div class = "container-fluid">
-        <div class="dropdown">
-            <button onclick="myFunction1()" class="dropbtn">Burgeri</button>
+    <div class="dropdown">
+        <button onclick="myFunction1()" data-toggle="dropdown" class="dropbtn">Burgeri</button>
             <div id="myDropdown1" class="dropdown-content">
                 <ul class="list-group">
                     <?php
@@ -136,24 +138,23 @@ if(!empty($_GET["action"])) {
 		                    foreach($product_array1 as $key=>$value){
 	                ?>
                     <li class="list-group-item">
-                    <form method="post" action="jelovnik.php?action=add&ID=<?php echo $product_array1[$key]["ID"]; ?>">
-                    <?php echo $product_array1[$key]["Naziv_jela"]; ?><?php unset($_SESSION["Naziv_jela"]); $_SESSION['Naziv_jela']=$product_array1[$key]["Naziv_jela"]; ?></a>..........<?php echo $product_array1[$key]["Cijena"]."kn"; ?>
+                    <form method="post" action="jelovnik2.php?action=add&ID=<?php echo $product_array1[$key]["ID"]; ?>">
+                    <?php echo $product_array1[$key]["Naziv_jela"]; ?>..........<?php echo $product_array1[$key]["Cijena"]."kn"; ?>
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
-                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Dodaj'></form></div>";
+                        echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' />
+                        <form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' value='Add'></form></div>";
                      }
-                    ?>
-                    
-                    </li>
+                    ?></li>
                 </ul>
                     <?php
 		                }
 	                }
 	                ?>
             </div>
-        </div>
+    </div>
         <div class="dropdown">
-            <button onClick="myFunction2()" class="dropbtn">Tortilje i kebabi</button>
+            <button onclick="myFunction2()" data-toggle="dropdown" class="dropbtn">Tortilje i kebabi</button>
             <div id="myDropdown2" class="dropdown-content">
                 <ul class="list-group">
                     <?php
@@ -167,7 +168,7 @@ if(!empty($_GET["action"])) {
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
                         echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Dodaj'></form></div>";
-                     }
+                    }
                     ?></li>
                 </ul>
                     <?php
@@ -177,7 +178,7 @@ if(!empty($_GET["action"])) {
             </div>
         </div>
         <div class="dropdown">
-            <button onClick="myFunction3()" class="dropbtn">Prilozi</button>
+            <button onclick="myFunction3()" data-toggle="dropdown" class="dropbtn">Prilozi</button>
             <div id="myDropdown3" class="dropdown-content">
                 <ul class="list-group">
                     <?php
@@ -191,7 +192,7 @@ if(!empty($_GET["action"])) {
                     <?php
                     if(isset($_SESSION['Korisnicko_ime'])){
                         echo " <div class='cart-action'><input type='text' class='product-quantity' name='quantity' value='1' size='2' /><form action='jelovnik2.php?action=add' method='post'><input name='addBtn' type='submit' id='addBtn' value='Dodaj'></form></div>";
-                     }
+                    }
                     ?></li>
                 </ul>
                     <?php
@@ -203,7 +204,7 @@ if(!empty($_GET["action"])) {
         
 
         <div class="dropdown">
-            <button onClick="myFunction4()" class="dropbtn">Ostalo</button>
+            <button onclick="myFunction4()" data-toggle="dropdown" class="dropbtn">Ostalo</button>
             <div id="myDropdown4" class="dropdown-content">
                 <ul class="list-group">
                     <?php
@@ -227,7 +228,7 @@ if(!empty($_GET["action"])) {
             </div>
         </div>
         <div class="dropdown">
-            <button onClick="myFunction5()" class="dropbtn">Pica</button>
+            <button onclick="myFunction5()" data-toggle="dropdown" class="dropbtn">Pića</button>
             <div id="myDropdown5" class="dropdown-content">
                 <ul class="list-group">
                     <?php
@@ -278,7 +279,8 @@ if(!empty($_GET["action"])) {
         $Narudzba_jela .=$Narudzba_jela1;
         
 
-        $query = "INSERT INTO narudzba (Korisnik_id, Korisnicko_ime, Adresa, Detalji_narudzbe, Ukupna_cijena) VALUES ('$Korisnik_id', '$Korisnicko_ime', '$Adresa', '$Detalji_narudzbe', '$Ukupna_cijena')";
+        $query = "INSERT INTO narudzba (Korisnik_id, Korisnicko_ime, Adresa, Detalji_narudzbe, Ukupna_cijena) 
+        VALUES ('$Korisnik_id', '$Korisnicko_ime', '$Adresa', '$Detalji_narudzbe', '$Ukupna_cijena')";
    
         if($conn->query($query) === TRUE){
             unset($_SESSION["cart_item"]);
@@ -326,23 +328,27 @@ if(!empty($_GET["action"])) {
             $Jelo_id=$item["ID"];
             $Cijena_uk = $Kolicina*$Cijena_uk;      
 		    ?>
-				<tr>
-				<td><?php echo "<p id ='btn1' name='Naziv_jela' >{$Naziv_jela}<p>"; ?></td>
-				<td><?php echo "<p id ='btn1' name='Jelo_id' >{$Jelo_id}<p>"; ?></td>
-				<td style="text-align:right;"><?php echo "<p id ='btn1'  name='Kolicina' >{$Kolicina}<p>"; ?></td>
-				<td  style="text-align:right;"><?php echo "<p id ='btn1'  name='Cijena' >{$Cijena} kn <p>"; ?></td>
-				<td  style="text-align:right;"><?php echo  number_format($Cijena_uk,2)." kn " ; ?></td>
-				<td style="text-align:center;"><form action="jelovnik.php?action=remove" method="post"><input id = "remove" name="deleteBtn <?php echo $item["ID"]; ?>" type="submit" value="Ukloni"><input name="index_to_remove" type="hidden" value="<?php echo $i; ?>"></form></td>
-				</tr>
-				<?php
-                $i++;
-				$total_quantity += $Kolicina;
-                $Ukupna_cijena += ($Cijena_uk*$Kolicina);
-                $Detalji_narudzbe .= nl2br("ID: {$Jelo_id} - Naziv: {$Naziv_jela} - Kolicina: {$Kolicina} - Cijena: {$Cijena} kn - Ukupna cijena jela:{$Cijena_uk} kn \n");
-                $Narudzba_jela .= "$Naziv_jela,";                    
+			<tr>
+			<td><?php echo "<p id ='btn1' name='Naziv_jela' >{$Naziv_jela}<p>"; ?></td>
+			<td><?php echo "<p id ='btn1' name='Jelo_id' >{$Jelo_id}<p>"; ?></td>
+			<td style="text-align:right;"><?php echo "<p id ='btn1'  name='Kolicina' >{$Kolicina}<p>"; ?></td>
+			<td  style="text-align:right;"><?php echo "<p id ='btn1'  name='Cijena' >{$Cijena} kn <p>"; ?></td>
+			<td  style="text-align:right;"><?php echo  number_format($Cijena_uk,2)." kn " ; ?></td>
+			<td style="text-align:center;">
+                <form action="jelovnik.php?action=remove" method="post">
+                    <input id = "remove" name="deleteBtn <?php echo $item["ID"]; ?>" type="submit" value="Ukloni">
+                    <input name="index_to_remove" type="hidden" value="<?php echo $i; ?>">
+                </form>
+            </td>
+			</tr>
+			<?php
+            $i++;
+			$total_quantity += $Kolicina;
+            $Ukupna_cijena += ($Cijena_uk*$Kolicina);
+            $Detalji_narudzbe .= nl2br("ID: {$Jelo_id} - Naziv: {$Naziv_jela} - Kolicina: {$Kolicina} - Cijena: {$Cijena} kn - Ukupna cijena jela:{$Cijena_uk} kn \n");
+            $Narudzba_jela .= "$Naziv_jela,";                    
         }
-        
-		?>
+	?>
 
         <tr>
             <td colspan="2" alignt="right"><b>Ukupna količina:</td>
@@ -418,27 +424,12 @@ if(isset($_SESSION['Korisnicko_ime'])){
 </html>
 
 <?php
-function statistikaKorisnikNarudzbaUnos($conn, $Korisnicko_ime){
-        $sql1 = "SELECT Statistika FROM korisnik WHERE Korisnicko_ime='$Korisnicko_ime'";
-        $rezultat = $conn->query($sql1);
-        if(mysqli_query($conn, $sql1)) {
-            while($row = $rezultat->fetch_assoc()){   
-                $Statistika = $row['Statistika'];
-            }
-        }
-        $Statistika = $Statistika + 1;
-        $sql2 = "UPDATE korisnik SET Statistika='$Statistika' WHERE Korisnicko_ime='$Korisnicko_ime'";
-        $rez = $conn->query($sql2); 
-}
-
-
-
-
 
 function statistikaUkupnoPotrošnjaKorisnikUnos($conn, $Korisnicko_ime){
     $db_handle = new DBController();
     $ukupni_zbroj=0;
-    $zbroj = $db_handle->runQuery("SELECT `Ukupna_cijena` FROM `narudzba` WHERE Korisnicko_ime='$Korisnicko_ime'");
+    $zbroj = $db_handle->runQuery("SELECT `Ukupna_cijena` FROM `narudzba`
+    WHERE Korisnicko_ime='$Korisnicko_ime'");
     if($zbroj==TRUE) {
         $zbrojArray = array('Ukupna_cijena'=>$zbroj[0]["Ukupna_cijena"]);
     }else{
@@ -462,6 +453,19 @@ function statistikaUkupnoPotrošnjaKorisnikUnos($conn, $Korisnicko_ime){
 
 }
 
+function statistikaKorisnikNarudzbaUnos($conn, $Korisnicko_ime){
+    $sql1 = "SELECT Statistika FROM korisnik WHERE Korisnicko_ime='$Korisnicko_ime'";
+    $rezultat = $conn->query($sql1);
+    if(mysqli_query($conn, $sql1)) {
+        while($row = $rezultat->fetch_assoc()){   
+            $Statistika = $row['Statistika'];
+        }
+    }
+    $Statistika = $Statistika + 1;
+    $sql2 = "UPDATE korisnik SET Statistika='$Statistika' WHERE Korisnicko_ime='$Korisnicko_ime'";
+    $rez = $conn->query($sql2); 
+}
+
 function statistikaNajJeloUnos($conn){
     $sql5 = "SELECT Narudzba_jela FROM statistika";
     $rezultat = $conn->query($sql5);
@@ -478,8 +482,5 @@ function statistikaNajJeloUnos($conn){
     $sql6 = "UPDATE statistika SET Najvise_narucivano_jelo='$Najvise_narucivano_jelo'";
     $rez = $conn->query($sql6); 
 }
-
-
-
 
 ?> 
